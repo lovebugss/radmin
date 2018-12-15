@@ -89,15 +89,18 @@ class Click extends React.Component {
             1000
         )
     }
+
     tick() {
         this.setState({
             date: new Date()
         });
     }
+
     // 在组件从DOM中移除之前调用
     componentWillUnmount() {
         clearInterval(this.timerID)
     }
+
     render() {
         return (
             <div>
@@ -108,26 +111,97 @@ class Click extends React.Component {
     }
 }
 
-class Popper extends React.Component{
-    constructor(){
+class Popper extends React.Component {
+    constructor() {
         super();
-        this.state = {name:"hello world"}
+        this.state = {name: "hello world"}
     }
-    preventPop(name,e){
+
+    preventPop(name, e) {
         e.preventDefault();
         alert(name)
     }
-    render (){
-        return(
+
+    render() {
+        return (
             <div>
                 <p>hello</p>
-                <a href="https://reactjs.org" onClick={this.preventPop.bind(this,this.state.name)}>click</a>
+                <a href="https://reactjs.org" onClick={this.preventPop.bind(this, this.state.name)}>click</a>
             </div>
 
         );
+    }
 }
+
+function UserGreeting(props) {
+    return <h1>Welcome back!</h1>;
+}
+
+function GuestGreeting(props) {
+    return <h1>Please sign up.</h1>;
+}
+
+function Greeting(props) {
+    const isLoginIn = props.isLoggedIn;
+    if (isLoginIn) {
+        return <UserGreeting/>
+    }
+    return <GuestGreeting/>
+}
+function LoginButton(props) {
+    return (
+        <button onClick={props.onClick}>Login</button>
+    );
+}
+function logoutButton(props) {
+    return (
+        <button onClick={props.onClick}>Logout</button>
+    );
+}
+
+class LoginControl extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {isLoggedIn: false};
+    }
+
+    handleLoginClick = () => {
+        this.setState({isLoggedIn: true});
+    }
+    handleLogoutClick = () => {
+        this.setState({isLoggedIn: false});
+    }
+
+    render() {
+        const isLoggedIn = this.state.isLoggedIn;
+        let button = null;
+        if (isLoggedIn) {
+            button = <LoginButton onClick={this.handleLogoutClick}/>
+        } else {
+            button = <LoginButton onClick={this.handleLoginClick}/>
+        }
+
+        return (
+            <div>
+                <Greeting isLoggedIn={isLoggedIn}/>
+                {button}
+            </div>
+        )
+    }
+}
+
+function NumberList(props) {
+    const numbers = props.numbers;
+    const ListItem = numbers.map((x) =>
+        <li key={x.toString()}>{x}</li>
+    );
+    return (
+
+        <ul>{ListItem}</ul>
+    );
 }
 function Main() {
+    const num = [1, 2, 3, 4, 5];
     return (
         <div>
             <Comment
@@ -138,13 +212,15 @@ function Main() {
             <Click/>
             <Test/>
             <Popper/>
+            <LoginControl/>
 
+            <NumberList numbers={num}/>
         </div>
     );
 }
 
 ReactDOM.render(
-    <Main/>
+    <App/>
     ,
     document.getElementById('root')
 );
