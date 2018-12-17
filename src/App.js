@@ -1,55 +1,37 @@
+"use strict";
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Routers from  './config/Routers';
+// import { Provider } from 'react-redux' // React-Redux 提供Provider组件，可以让容器组件拿到state
+
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+const navsData = [{
+    id: 1,
+    url: '/',
+    name: 'Home'
+}, {
+    id: 2,
+    url: '/about',
+    name: 'About'
+}, {
+    id: 3,
+    url: '/topics',
+    name: 'Topics'
+}];
 
-const App = () => (
-    <Router>
-        <div>
-            <Header />
-            <Route exact path="/" component={Home}/>
-            <Route path="/about" component={About}/>
-            <Route path="/topics" component={Topics}/>
-        </div>
-    </Router>
-);
+// class App extends Component {
+//     render() {
+//         return (
+//                 <div>
+//                     {Routers}
+//                 </div>
+//         );
+//     }
+// }
 
-const Home = () => <h2>Home</h2>;
-const About = () => <h2>About</h2>;
-const Topic = ({match}) => <h3>Requested Param: {match.params.id}</h3>;
-const Topics = ({match}) => (
-    <div>
-        <h2>Topics</h2>
+function App() {
 
-        <ul>
-            <li>
-                <Link to={`${match.url}/components`}>Components</Link>
-            </li>
-            <li>
-                <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-            </li>
-        </ul>
-
-        <Route path={`${match.path}/:id`} component={Topic}/>
-        <Route
-            exact
-            path={match.path}
-            render={() => <h3>Please select a topic.</h3>}
-        />
-    </div>
-);
-const Header = () => (
-    <ul>
-        <li>
-            <Link to="/">Home</Link>
-        </li>
-        <li>
-            <Link to="/about">About</Link>
-        </li>
-        <li>
-            <Link to="/topics">Topics</Link>
-        </li>
-    </ul>
-);
+    return(<p style={{color:'red'}}>Hello World</p>)
+}
 
 export default App;
