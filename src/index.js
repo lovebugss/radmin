@@ -9,14 +9,14 @@ import Time from './Time'
 import Topics from './Topics'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import PropTypes from 'prop-types'
-
+import Game from './Game'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 
 // React component
 class Counter extends Component {
     render() {
-        const { value, onIncreaseClick } = this.props
+        const { value, onIncreaseClick } = this.props;
         return (
             <div>
                 <span>{value}</span>
@@ -29,24 +29,24 @@ class Counter extends Component {
 Counter.propTypes = {
     value: PropTypes.number.isRequired,
     onIncreaseClick: PropTypes.func.isRequired
-}
+};
 
 // Action
-const increaseAction = { type: 'increase' }
+const increaseAction = { type: 'increase' };
 
 // Reducer
 function counter(state = { count: 0 }, action) {
     const count = state.count
     switch (action.type) {
         case 'increase':
-            return { count: count + 1 }
+            return { count: count + 1 };
         default:
             return state
     }
 }
 
 // Store
-const store = createStore(counter)
+const store = createStore(counter);
 
 // Map Redux state to component props
 function mapStateToProps(state) {
@@ -66,11 +66,9 @@ function mapDispatchToProps(dispatch) {
 const AA = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Counter)
+)(Counter);
 ReactDOM.render(
-    <Provider store={store}>
-        <AA />
-    </Provider>
+    <Game/>
     ,
     document.getElementById('root')
 );

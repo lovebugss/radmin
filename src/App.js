@@ -1,6 +1,6 @@
 "use strict";
 import React, {Component} from 'react';
-import './App.css';
+import './static/css/App.css';
 import Routers from  './config/Routers';
 // import { Provider } from 'react-redux' // React-Redux 提供Provider组件，可以让容器组件拿到state
 
