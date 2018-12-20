@@ -53,7 +53,7 @@ export default function () {
                 <div><img src={one} /></div>
             </Carousel>
 
-            <Content style={{padding: '0 200px'}}>
+            <Content style={{padding: '0 180px'}}>
                 {/*<Breadcrumb style={{margin: '24px 0px 0px 0px', background: '#fff'}}>*/}
                     {/*<Breadcrumb.Item>Home</Breadcrumb.Item>*/}
                     {/*<Breadcrumb.Item>List</Breadcrumb.Item>*/}

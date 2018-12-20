@@ -1,7 +1,7 @@
 /**
  * Created by renjp on 2018/12/20.
  */
-"use strict";
+
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {
@@ -50,8 +50,10 @@ class ArticleList extends React.Component {
                         <List.Item
                             key={item.title}
                             actions={!loading && [<IconText type="tags-o" text="java"/>,
-                                <IconText type="user-o" text="admin"/>, <IconText type="eye" text="2"/>,<IconText type="contacts" text="2018-12-10 15:30:21"/>]}
-                            extra={!loading && <img width={272} alt="logo"
+                                <IconText type="user-o" text="admin"/>,
+                                <IconText type="eye" text="2"/>,
+                                <IconText type="contacts" text="2018-12-10 15:30:21"/>]}
+                            extra={!loading && <img width={272} height={168} style={{width:'272px',}} alt="logo"
                                                     src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"/>}
                         >
                             <Skeleton loading={loading} active avatar>
