@@ -1,2 +1,30 @@
 @import '~antd/dist/antd.css';
 
+.logo {
+    width: 120px;
+    height: 31px;
+    /*background: #3c9939;*/
+    /*margin: 16px 24px 16px 0;*/
+    float: left;
+}
+.logo .text {
+    /*margin: 16px 24px 16px 0;*/
+}
+.ant-carousel .slick-slide img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+.ant-carousel .slick-slide {
+    text-align: center;
+    height: 320px;
+    line-height: 320px;
+    background: #793c1e;
+    overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+    /*color: #fff;*/
+}
+

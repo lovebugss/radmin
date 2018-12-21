@@ -13,7 +13,7 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 class TopBar extends React.Component {
     state = {
-        current: 'mail',
+        current: 'home',
     };
 
     handleClick = (e) => {
@@ -31,15 +31,20 @@ class TopBar extends React.Component {
                 mode="horizontal"
                 // theme="dark"
                 defaultSelectedKeys={['2']}
-                style={{lineHeight: '64px', float: 'right'}}
+                style={{lineHeight: '64px', float: 'right', fontSize: '18px'}}
             >
-                <Menu.Item key="mail">
-                    <Icon type="mail"/>Navigation One
+                <Menu.Item key="home">
+                    <a href="/">
+                        <Icon type="home"/>首页
+                    </a>
                 </Menu.Item>
-                <Menu.Item key="app" disabled>
-                    <Icon type="appstore"/>Navigation Two
+                <Menu.Item key="app">
+                    <a href="time">
+
+                        <Icon type="appstore"/>时间轴
+                    </a>
                 </Menu.Item>
-                <SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting"/>Navigation Three - Submenu</span>}>
+                <SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting"/>???</span>}>
                     <MenuItemGroup title="Item 1">
                         <Menu.Item key="setting:1">Option 1</Menu.Item>
                         <Menu.Item key="setting:2">Option 2</Menu.Item>
@@ -49,8 +54,10 @@ class TopBar extends React.Component {
                         <Menu.Item key="setting:4">Option 4</Menu.Item>
                     </MenuItemGroup>
                 </SubMenu>
-                <Menu.Item key="alipay">
-                    <a href="https://ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
+                <Menu.Item key="about">
+
+                    <a href="https://ant.design" target="_blank" rel="noopener noreferrer"><Icon
+                        type="solution"/>关于我</a>
                 </Menu.Item>
             </Menu>
         );
