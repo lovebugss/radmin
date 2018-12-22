@@ -217,7 +217,6 @@ class Time extends Component {
                         </Sider>
                     </Layout>
                 </Content>
-
             </Content>
         );
 
@@ -228,7 +227,7 @@ function Home() {
 
     return (
         <Content>
-            <Carousel aotuload>
+            <Carousel autoplay>
                 <div><img src={two}/></div>
                 <div><img src={one}/></div>
             </Carousel>
