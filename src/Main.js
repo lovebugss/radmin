@@ -19,13 +19,170 @@ import {
     Button,
     Carousel,
     Timeline,
+    Row,
+    Col,
+    Popover,
 } from 'antd';
 import two from './index/2.jpg';
 import one from './index/3.jpg'
+import TweenOne from 'rc-tween-one';
+import PropTypes from 'prop-types';
+import PathPlugin from 'rc-tween-one/lib/plugin/PathPlugin';
+import BannerAnim, {Element} from 'rc-banner-anim';
+import 'rc-banner-anim/assets/index.css';
+
+import ReactMarkdown  from 'react-markdown/with-html';
 
 const {Header, Content, Footer, Sider} = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
+
+const BgElement = Element.BgElement;
+
+class Banner extends React.Component {
+    render() {
+        return (
+            <BannerAnim prefixCls="banner-user" autoPlay>
+                <Element key="aaa"
+                         prefixCls="banner-user-elem"
+                         followParallax={{
+                             delay: 1000,
+                             data: [
+                                 {id: 'bg', value: 20, bgPosition: '50%', type: ['backgroundPositionX']},
+                                 {id: 'title', value: 50, type: 'x'},
+                                 {id: 'content', value: -30, type: 'x'},
+                             ],
+                         }}
+                >
+                    <BgElement
+                        key="bg"
+                        className="bg"
+                        style={{
+                            backgroundImage: `url(${two})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                        }}
+                        id="bg"
+                    />
+                    <TweenOne className="banner-user-title"
+                              animation={{y: 30, opacity: 0, type: 'from'}}
+                              id="title"
+                    >
+                        Ant Motion Banner
+                    </TweenOne>
+                    <TweenOne className="banner-user-text"
+                              animation={{y: 30, opacity: 0, type: 'from', delay: 100}}
+                              id="content"
+                    >
+                        The Fast Way Use Animation In React
+                    </TweenOne>
+                </Element>
+                <Element key="bbb"
+                         prefixCls="banner-user-elem"
+                >
+                    <BgElement
+                        key="bg"
+                        className="bg"
+                        style={{
+                            backgroundImage: `url(${one})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                        }}
+                    />
+                    <TweenOne className="banner-user-title" animation={{y: 30, opacity: 0, type: 'from'}}>
+                        Ant Motion Banner
+                    </TweenOne>
+                    <TweenOne className="banner-user-text"
+                              animation={{y: 30, opacity: 0, type: 'from', delay: 100}}
+                    >
+                        The Fast Way Use Animation In React
+                    </TweenOne>
+                </Element>
+            </BannerAnim>
+        );
+    }
+}
+
+function Logo(props) {
+
+    return (
+        <TweenOne
+            animation={{
+                x: 80,
+                scale: 0.5,
+                rotate: 120,
+                yoyo: true, // demo 演示需要
+                repeat: -1, // demo 演示需要
+                duration: 1000
+            }}
+            paused={props.paused}
+            style={{transform: 'translateX(-80px)'}}
+            className="code-box-shape"
+        />
+    );
+}
+Logo.propTypes = {
+    children: PropTypes.any,
+    className: PropTypes.string,
+    paused: PropTypes.bool,
+};
+TweenOne.plugins.push(PathPlugin);
+
+class Demo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.path = `M3.5,175V19c0,0,1-8.75,8.25-11.5S26.5,8,26.5,8l54,53.25
+      c0,0,7,8.25,14.5,0.75s51.5-52.25,51.5-52.25s9.75-7,18-2s7.75,11.5,7.75,11.5
+      v104c0,0-0.5,15.75-15.25,15.75s-15.75-15-15.75-15V68.5c0,0-0.125-9.125-6-3.25
+      s-36.25,36-36.25,36s-11.625,11.875-24-0.5S40.25,65.5,40.25,65.5
+      s-5.75-5.25-5.75,2s0,107.25,0,107.25s-0.75,13.5-14.5,13.5S3.5,175,3.5,175z`;
+        this.animation = {
+            path: this.path,
+            repeat: 1,
+            duration: 5000,
+            ease: 'linear'
+        };
+    }
+
+    render() {
+        return (
+            <div style={{position: 'relative', height: 60, width: 60, margin: '10px auto'}}>
+                <TweenOne
+                    animation={this.animation}
+                    style={{margin: 0, width: 20, height: 20, transform: 'translate(-10px, -10px)'}}
+                    className="code-box-shape"
+                    paused={this.props.paused}
+                />
+                <svg width="60" height="60">
+                    <path d={this.path} fill="none" stroke="rgba(1, 155, 240, 0.2)"/>
+                </svg>
+            </div>
+        );
+    }
+}
+Demo.propTypes = {
+    children: PropTypes.any,
+    className: PropTypes.string,
+    paused: PropTypes.bool,
+};
+function MinTopBar() {
+    let text = 'title';
+    let content = (
+        <div>
+            <p>content</p>
+            <p>content</p>
+            <p>content</p>
+            <p>content</p>
+
+        </div>);
+
+
+    return (
+        <Popover placement="bottomRight" title={text} content={content} trigger="click">
+            <Button><Icon type="bars"/></Button>
+        </Popover>
+    );
+}
 
 // 导航栏
 class TopBar extends Component {
@@ -48,44 +205,55 @@ class TopBar extends Component {
     render() {
         return (
             <Header style={{background: '#ffffff'}}>
-                <div className="logo">
-                    <p className="text">ITRJP.COM</p>
-                </div>
+                <Row>
 
-                <Menu
-                    onClick={this.handleClick}
-                    selectedKeys={[this.state.current]}
-                    mode="horizontal"
-                    // theme="dark"
-                    defaultSelectedKeys={['2']}
-                    style={{lineHeight: '64px', float: 'right', fontSize: '18px'}}
-                >
-                    <Menu.Item key="home">
-                        <Link to="/">
-                            <Icon type="home"/>首页
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key="app">
-                        <Link to="time">
-                            <Icon type="appstore"/>时间轴
-                        </Link>
-                    </Menu.Item>
-                    <SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting"/>???</span>}>
-                        <MenuItemGroup title="Item 1">
-                            <Menu.Item key="setting:1">Option 1</Menu.Item>
-                            <Menu.Item key="setting:2">Option 2</Menu.Item>
-                        </MenuItemGroup>
-                        <MenuItemGroup title="Item 2">
-                            <Menu.Item key="setting:3">Option 3</Menu.Item>
-                            <Menu.Item key="setting:4">Option 4</Menu.Item>
-                        </MenuItemGroup>
-                    </SubMenu>
-                    <Menu.Item key="about">
+                    <Col xs={24} sm={24} md={5} lg={5} xl={5} xxl={4}>
+                        <div className="logo">
+                            {/*<p className="text">ITRJP.COM</p>*/}
+                            <Logo/>
+                            {/*<Demo/>*/}
+                        </div>
+                        {/*<MinTopBar/>*/}
+                    </Col>
+                    <Col xs={0} sm={0} md={19} lg={19} xl={19} xxl={20}>
+                        <Menu
+                            onClick={this.handleClick}
+                            selectedKeys={[this.state.current]}
+                            mode="horizontal"
+                            // theme="dark"
+                            defaultSelectedKeys={['2']}
+                            style={{lineHeight: '64px', float: 'right', fontSize: '18px'}}
+                        >
+                            <Menu.Item key="home">
+                                <Link to="/">
+                                    <Icon type="home"/>首页
+                                </Link>
+                            </Menu.Item>
+                            <Menu.Item key="app">
+                                <Link to="time">
+                                    <Icon type="appstore"/>时间轴
+                                </Link>
+                            </Menu.Item>
+                            <SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting"/>???</span>}>
+                                <MenuItemGroup title="Item 1">
+                                    <Menu.Item key="setting:1">Option 1</Menu.Item>
+                                    <Menu.Item key="setting:2">Option 2</Menu.Item>
+                                </MenuItemGroup>
+                                <MenuItemGroup title="Item 2">
+                                    <Menu.Item key="setting:3">Option 3</Menu.Item>
+                                    <Menu.Item key="setting:4">Option 4</Menu.Item>
+                                </MenuItemGroup>
+                            </SubMenu>
+                            <Menu.Item key="about">
 
-                        <a href="https://ant.design" target="_blank" rel="noopener noreferrer"><Icon
-                            type="solution"/>关于我</a>
-                    </Menu.Item>
-                </Menu>
+                                <a href="https://ant.design" target="_blank" rel="noopener noreferrer"><Icon
+                                    type="solution"/>关于我</a>
+                            </Menu.Item>
+                        </Menu>
+                    </Col>
+                </Row>
+
+
             </Header>
         );
     }
@@ -227,10 +395,11 @@ function Home() {
 
     return (
         <Content>
-            <Carousel autoplay>
-                <div><img src={two}/></div>
-                <div><img src={one}/></div>
-            </Carousel>
+            {/*<Carousel autoplay>*/}
+            {/*<div><img src={two}/></div>*/}
+            {/*<div><img src={one}/></div>*/}
+            {/*</Carousel>*/}
+            <Banner/>
             <Content style={{padding: '0 180px'}}>
                 {/*<Breadcrumb style={{margin: '24px 0px 0px 0px', background: '#fff'}}>*/}
                 {/*<Breadcrumb.Item>Home</Breadcrumb.Item>*/}
@@ -261,14 +430,32 @@ class ArticleContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            html: '1111111111',
+            html: `##Spring常用注解
+@Import 
+
+	@Target(ElementType.TYPE)
+	@Retention(RetentionPolicy.RUNTIME)
+	@Documented
+	public @interface Import {
+		Class<?>[] value();
+	}
+这个注解是用来导入一个或者多个类（由Spring管理），或者配置类（配置类中的bean由Spring管理），因此 @Import 可以代替 @Component 和 @Configuration等注解。
+
+##Spring 常用可拓展接口
+CommandLineRunner  
+Spring Boot应用程序在启动后，会遍历CommandLineRunner接口的实例并运行它们的run方法`,
         };
     }
 
     render() {
         return (
             <div>
-                <div dangerouslySetInnerHTML={{__html: this.state.html}}></div>
+                <ReactMarkdown
+                    // source={this.state.html}
+                    escapeHtml={false}>
+                    {/*<div dangerouslySetInnerHTML={{__html: this.state.html}}></div>*/}
+
+                </ReactMarkdown >
             </div>
 
         );
@@ -310,6 +497,7 @@ class Main extends Component {
                         <Route exact path="/" component={Home}/>
                         <Route path="/time" component={Time}/>
                         <Route path="/topic/:id" component={ArticleContent}/>
+
                     </Switch>
                     <Foot/>
                 </Layout>
