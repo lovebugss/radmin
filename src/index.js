@@ -1,8 +1,7 @@
 "use strict";
 import React ,{Component} from 'react';
 import ReactDOM from 'react-dom';
-// import App from './Main';
-import App from './components/App';
+import App from './Main';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'

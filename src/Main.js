@@ -32,6 +32,7 @@ import BannerAnim, {Element} from 'rc-banner-anim';
 import 'rc-banner-anim/assets/index.css';
 
 import ReactMarkdown  from 'react-markdown/with-html';
+import MkDemo  from './mk/demo'
 
 const {Header, Content, Footer, Sider} = Layout;
 const SubMenu = Menu.SubMenu;
@@ -249,6 +250,11 @@ class TopBar extends Component {
                                 <a href="https://ant.design" target="_blank" rel="noopener noreferrer"><Icon
                                     type="solution"/>关于我</a>
                             </Menu.Item>
+                            <Menu.Item key="write">
+
+                                <a href="https://ant.design" target="_blank" rel="noopener noreferrer"><Icon
+                                    type="solution"/>写文章</a>
+                            </Menu.Item>
                         </Menu>
                     </Col>
                 </Row>
@@ -275,10 +281,10 @@ const listData = [];
 for (let i = 0; i < 18; i++) {
     listData.push({
         href: '/topic',
-        title: `ant design part ${i}`,
+        title: `JAVA ${i}`,
         avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
         description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-        content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+        content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series ofWe supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), design principles, practical patterns and high quality design resources (Sketch and Axure),to help people create their product prototypes beautifully and efficiently.',
     });
 }
 
@@ -327,7 +333,7 @@ class ArticleList extends React.Component {
                         >
                             <Skeleton loading={loading} active avatar>
                                 <List.Item.Meta
-                                    avatar={<Avatar src={item.avatar}/>}
+                                    // avatar={<Avatar src={item.avatar}/>}
                                     title={<a href={item.href}>{item.title}</a>}
                                     description={item.description}
                                 />
@@ -395,10 +401,6 @@ function Home() {
 
     return (
         <Content>
-            {/*<Carousel autoplay>*/}
-            {/*<div><img src={two}/></div>*/}
-            {/*<div><img src={one}/></div>*/}
-            {/*</Carousel>*/}
             <Banner/>
             <Content style={{padding: '0 180px'}}>
                 {/*<Breadcrumb style={{margin: '24px 0px 0px 0px', background: '#fff'}}>*/}
@@ -430,28 +432,46 @@ class ArticleContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            html: `##Spring常用注解
-@Import 
-
-	@Target(ElementType.TYPE)
-	@Retention(RetentionPolicy.RUNTIME)
-	@Documented
-	public @interface Import {
-		Class<?>[] value();
-	}
-这个注解是用来导入一个或者多个类（由Spring管理），或者配置类（配置类中的bean由Spring管理），因此 @Import 可以代替 @Component 和 @Configuration等注解。
-
-##Spring 常用可拓展接口
-CommandLineRunner  
-Spring Boot应用程序在启动后，会遍历CommandLineRunner接口的实例并运行它们的run方法`,
+            html: `# Live demo
+Changes are automatically rendered as you type.
+* Implements [GitHub Flavored Markdown](https://github.github.com/gfm/)
+* Renders actual, "native" React DOM elements
+* Allows you to escape or skip HTML (try toggling the checkboxes above)
+* If you escape or skip the HTML, no \`dangerouslySetInnerHTML\` is used! Yay!
+## HTML block below
+<blockquote>
+  This blockquote will change based on the HTML settings above.
+</blockquote>
+## How about some code?
+\`\`\`js
+var React = require('react');
+var Markdown = require('react-markdown');
+React.render(
+  <Markdown source="# Your markdown here" />,
+  document.getElementById('content')
+);
+\`\`\`
+Pretty neat, eh?
+## Tables?
+| Feature   | Support |
+| --------- | ------- |
+| tables    | ✔ |
+| alignment | ✔ |
+| wewt      | ✔ |
+## More info?
+Read usage information and more on [GitHub](//github.com/rexxars/react-markdown)
+---------------
+A component by [Espen Hovlandsdal](https://espen.codes/)
+`,
         };
     }
 
     render() {
         return (
             <div>
+                <MkDome/>
                 <ReactMarkdown
-                    // source={this.state.html}
+                    source={this.state.html}
                     escapeHtml={false}>
                     {/*<div dangerouslySetInnerHTML={{__html: this.state.html}}></div>*/}
 
