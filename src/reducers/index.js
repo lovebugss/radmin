@@ -1,8 +1,12 @@
-import { combineReducers } from 'redux'
+import {combineReducers} from 'redux';
+import {loadingBarReducer as loadingBar} from 'react-redux-loading-bar';
 import todos from './todos'
 import visibilityFilter from './visibilityFilter'
 
-export default combineReducers({
-  todos,
-  visibilityFilter
-})
+const rootReducer =combineReducers({
+    todos,
+    visibilityFilter,
+    loadingBar
+});
+
+export default rootReducer;
