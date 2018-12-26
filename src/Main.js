@@ -1,11 +1,9 @@
 /**
  * Created by renjp on 2018/12/21.
  */
-"use strict";
 import React, {Component} from 'react';
 import './static/css/App.css';
 // import { Provider } from 'react-redux' // React-Redux 提供Provider组件，可以让容器组件拿到state
-import Box from './index/Box'
 import {BrowserRouter as Router, Route, Link, Switch, IndexLink,} from "react-router-dom";
 import {
     Layout,
@@ -23,8 +21,8 @@ import {
     Col,
     Popover,
 } from 'antd';
-import two from './index/2.jpg';
-import one from './index/3.jpg'
+import two from './static/images/bg-01.jpg';
+import one from './static/images/bg-01.jpg'
 import TweenOne from 'rc-tween-one';
 import PropTypes from 'prop-types';
 import PathPlugin from 'rc-tween-one/lib/plugin/PathPlugin';
@@ -32,7 +30,6 @@ import BannerAnim, {Element} from 'rc-banner-anim';
 import 'rc-banner-anim/assets/index.css';
 
 import ReactMarkdown  from 'react-markdown/with-html';
-import MkDemo  from './mk/demo'
 
 const {Header, Content, Footer, Sider} = Layout;
 const SubMenu = Menu.SubMenu;
@@ -387,7 +384,6 @@ class Time extends Component {
                             style={{margin: '0px 0px 0px 12px', background: '#f0f2f5'}}
                             breakpoint='xs'
                             collapsedWidth='0'>
-                            <Box/>
                         </Sider>
                     </Layout>
                 </Content>
@@ -418,7 +414,6 @@ function Home() {
                         style={{margin: '0px 0px 0px 12px', background: '#f0f2f5'}}
                         breakpoint='xs'
                         collapsedWidth='0'>
-                        <Box/>
                     </Sider>
                 </Layout>
             </Content>
@@ -469,7 +464,6 @@ A component by [Espen Hovlandsdal](https://espen.codes/)
     render() {
         return (
             <div>
-                <MkDome/>
                 <ReactMarkdown
                     source={this.state.html}
                     escapeHtml={false}>

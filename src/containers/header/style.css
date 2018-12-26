@@ -1,0 +1,13 @@
+.logo {
+    background-color: cadetblue;
+}
+
+.header {
+    background-color: #fff;
+}
+
+.header .menu {
+    height: 64px;
+    line-height: inherit;
+    float: right;
+}
