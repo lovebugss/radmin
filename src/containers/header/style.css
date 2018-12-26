@@ -4,10 +4,11 @@
 
 .header {
     background-color: #fff;
+
 }
 
 .header .menu {
-    height: 64px;
-    line-height: inherit;
+    /*height: 64px;*/
+    line-height: 60px;
     float: right;
 }

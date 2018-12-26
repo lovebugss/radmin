@@ -45,7 +45,7 @@ export default function Header() {
                         mode="horizontal"
                         // theme="dark"
                         defaultSelectedKeys={['2']}
-                        style={{lineHeight: '64px', float: 'right', fontSize: '18px'}}
+                        style={{lineHeight: '62px', float: 'right', fontSize: '18px'}}
                     >
                         <Menu.Item key="home">
                             <Link to="/">

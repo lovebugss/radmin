@@ -27,7 +27,7 @@ function Logo() {
 function TopBar(props) {
 
     return (
-        <Header className="header">
+        <Header className="header" style={{ position: 'fixed', zIndex: 99, width: '100%'}}>
 
             <Row>
                 <Col xs={24} sm={24} md={5} lg={5} xl={5} xxl={4}>
@@ -39,6 +39,8 @@ function TopBar(props) {
                         onClick={props.handleClick}
                         selectedKeys={[props.current]}
                         mode="horizontal"
+                        defaultSelectedKeys={['2']}
+                        style={{lineHeight: '60px', float: 'right'}}
                     >
                         <Menu.Item key="home">
                             <Icon type="home" theme="filled" />Home
@@ -51,7 +53,7 @@ function TopBar(props) {
                         </Menu.Item>
                         <SubMenu
                             title={<span className="submenu-title-wrapper"><Icon
-                                type="setting"/>Navigation Three - Submenu</span>}>
+                                type="setting"/>下载</span>}>
                             <MenuItemGroup title="Item 1">
                                 <Menu.Item key="setting:1">Option 1</Menu.Item>
                                 <Menu.Item key="setting:2">Option 2</Menu.Item>
@@ -62,8 +64,7 @@ function TopBar(props) {
                             </MenuItemGroup>
                         </SubMenu>
                         <Menu.Item key="alipay">
-                            <a href="https://ant.design" target="_blank" rel="noopener noreferrer">Navigation Four -
-                                Link</a>
+                            <a href="https://ant.design" target="_blank" rel="noopener noreferrer">关于我</a>
                         </Menu.Item>
                     </Menu>
                 </Col>

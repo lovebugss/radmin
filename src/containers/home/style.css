@@ -1,5 +1,5 @@
 .banner-user{
-    height: 420px;
+    height: 360px;
 }
 .banner-user-elem{
     text-align: center;
@@ -21,4 +21,14 @@
     top: 0;
     left: 0;
     overflow: hidden;
+}
+.main-left {
+    background-color: bisque;
+    margin: 0px 12px;
+    padding: 12px;
+}
+.main-right {
+    background-color: coral;
+    margin: 0px 12px;
+    padding: 12px;
 }
