@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {Layout, Row, Col,} from 'antd';
 import Banner from './Banner';
 import './style.css'
+import ArticleList from '../list'
+import Sidebar from '../sidebar'
 
 const {Content} = Layout;
 
@@ -15,20 +17,14 @@ function Home() {
             <Banner/>
             <Content style={{padding: '0 50px', marginTop: 12}}>
                 <Row>
-                    <Col xs={0} sm={0} md={18} lg={18} xl={18} xxl={20}>
+                    <Col xs={{span: 24}} sm={24} md={18} lg={18} xl={18} xxl={19}>
                         <div className="main-left">
-                            <p>1111111</p>
-                            <p>1111111</p>
-                            <p>1111111</p>
-                            <p>1111111</p>
-                            <p>1111111</p>
-                            <p>1111111</p>
-                            <p>1111111</p>
+                            <ArticleList/>
                         </div>
                     </Col>
-                    <Col xs={24} sm={24} md={6} lg={6} xl={6} xxl={4}>
+                    <Col xs={0} sm={0} md={6} lg={6} xl={6} xxl={5}>
                         <div className="main-right">
-                            <p>1111111</p>
+                            <Sidebar/>
                         </div>
                     </Col>
                 </Row>

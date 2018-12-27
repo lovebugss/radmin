@@ -41,7 +41,7 @@ function Banner(props) {
                 </TweenOne>
                 <TweenOne className="banner-user-text"
                           animation={{y: 30, opacity: 0, type: 'from', delay: 100}}
-                          id="content"
+                         id="content"
                 >
                     The Fast Way Use Animation In React
                 </TweenOne>
@@ -58,7 +58,8 @@ function Banner(props) {
                         backgroundPosition: 'center',
                     }}
                 />
-                <TweenOne className="banner-user-title" animation={{y: 30, opacity: 0, type: 'from'}}>
+                <TweenOne className="banner-user-title"
+                          animation={{y: 30, opacity: 0, type: 'from',delay: 100}}>
                     Ant Motion Banner
                 </TweenOne>
                 <TweenOne className="banner-user-text"

@@ -3,14 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import rootReducer from './reducers';
 import {AppContainer} from 'react-hot-loader';
-import './static/css/index.css'
+import './static/css/index.css';
+import './static/css/animate.css';
+import configureStore from './configureStore';
 
-
-const store = createStore(rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = configureStore();
 
 ReactDOM.render(
     <AppContainer>
@@ -21,5 +19,4 @@ ReactDOM.render(
     ,
     document.getElementById('root')
 );
-
 serviceWorker.unregister();

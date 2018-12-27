@@ -8,6 +8,7 @@ import {
 } from 'antd';
 import './style.css';
 import '../../static/font/iconfont.css';
+import LoadingBar from 'react-redux-loading-bar'
 
 
 const {
@@ -68,6 +69,7 @@ function TopBar(props) {
                         </Menu.Item>
                     </Menu>
                 </Col>
+                <LoadingBar/>
             </Row>
 
 

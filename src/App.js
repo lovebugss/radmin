@@ -4,7 +4,7 @@ import {Layout} from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Main from './containers';
-import Loading from './components/Load'
+import Loading from './components/load';
 
 
 class App extends React.Component {

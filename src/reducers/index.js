@@ -1,7 +1,6 @@
 import {combineReducers} from 'redux';
 import {loadingBarReducer as loadingBar} from 'react-redux-loading-bar';
-import todos from './todos'
-import visibilityFilter from './visibilityFilter'
+import article from './article'
 
 const initialState = {
     isFetching: false,
@@ -41,8 +40,6 @@ export const actions = {
 
 // Reducer
 export function reducer(state = initialState, action) {
-    console.log(state)
-    console.log(action)
     switch (action.type) {
         case actionsTypes.FETCH_START:
             return {
@@ -71,9 +68,8 @@ export function reducer(state = initialState, action) {
 };
 
 const rootReducer = combineReducers({
-    todos,
-    visibilityFilter,
     app: reducer,
+    article,
     loadingBar
 });
 
