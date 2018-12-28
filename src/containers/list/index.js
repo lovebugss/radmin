@@ -36,7 +36,6 @@ class ArticleList extends React.Component {
     }
 
     componentDidMount(){
-
        this.props.loadArticle();
     }
 
@@ -86,7 +85,8 @@ class ArticleList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        listData: state.article.listData,
+
+        listData: state.article.dataList,
         pageSize: state.article.pageSize,
         isLoading: state.article.isLoading
     }

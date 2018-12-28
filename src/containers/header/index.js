@@ -8,7 +8,8 @@ import {
 } from 'antd';
 import './style.css';
 import '../../static/font/iconfont.css';
-import LoadingBar from 'react-redux-loading-bar'
+import LoadingBar from 'react-redux-loading-bar';
+import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 
 
 const {
@@ -21,14 +22,15 @@ const MenuItemGroup = Menu.ItemGroup;
 
 function Logo() {
     return (
-        <div className="logo">logo</div>
+        <div className="logo">ITRJP.COM</div>
     )
 }
 
 function TopBar(props) {
 
+
     return (
-        <Header className="header" style={{ position: 'fixed', zIndex: 99, width: '100%'}}>
+        <Header className="header" style={{position: 'fixed', zIndex: 99, width: '100%'}}>
 
             <Row>
                 <Col xs={24} sm={24} md={5} lg={5} xl={5} xxl={4}>
@@ -44,13 +46,19 @@ function TopBar(props) {
                         style={{lineHeight: '60px', float: 'right'}}
                     >
                         <Menu.Item key="home">
-                            <Icon type="home" theme="filled" />Home
+                            <Link to="/">
+                                <Icon type="home" theme="filled"/>Home
+                            </Link>
                         </Menu.Item>
-                        <Menu.Item key="app">
-                            <i className="iconfont icon-Time"/> 时光
+                        <Menu.Item key="time">
+                            <Link to="/time">
+                                <i className="iconfont icon-Time"/> 时光
+                            </Link>
                         </Menu.Item>
                         <Menu.Item key="liuyan">
-                            <i className="iconfont icon-Time"/> 留言
+                            <Link to="/">
+                                <i className="iconfont icon-Time"/> 留言
+                            </Link>
                         </Menu.Item>
                         <SubMenu
                             title={<span className="submenu-title-wrapper"><Icon

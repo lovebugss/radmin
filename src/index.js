@@ -8,6 +8,7 @@ import './static/css/index.css';
 import './static/css/animate.css';
 import configureStore from './configureStore';
 
+
 const store = configureStore();
 
 ReactDOM.render(

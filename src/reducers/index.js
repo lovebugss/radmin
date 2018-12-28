@@ -4,7 +4,7 @@ import article from './article'
 
 const initialState = {
     isFetching: false,
-    key:'app',
+    key:'home',
     msg: {
         code: 1,
         content: ''

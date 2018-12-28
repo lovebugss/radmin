@@ -1,9 +1,12 @@
 .logo {
-    background-color: cadetblue;
+    /*background-color: cadetblue;*/
+    font-size: 30px;
+    text-align: center;
 }
 
 .header {
     background-color: #fff;
+    border-bottom: 2px solid #e8e8e8;
 
 }
 

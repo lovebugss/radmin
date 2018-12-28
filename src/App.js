@@ -25,6 +25,7 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
+    debugger
     return {
         isFetching:state.app.isFetching
     }
