@@ -7,7 +7,8 @@ import Layouts from './containers';
 import Loading from './components/load';
 import ArticleList from './containers/list'
 import Time from './containers/time';
-import  MessageBoard from './containers/comment'
+import  MessageBoard from './containers/comment';
+import Gallery from'./containers/photo';
 
 
 class App extends React.Component {
@@ -23,7 +24,7 @@ class App extends React.Component {
                         <Route exact path="/" component={ArticleList}/>
                         <Route path="/time" component={Time}/>
                         <Route path="/message" component={MessageBoard}/>
-
+                        <Route path="/photo" component={Gallery}/>
                         </Switch>
 
                     </Layouts>

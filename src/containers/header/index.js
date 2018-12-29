@@ -55,9 +55,14 @@ function TopBar(props) {
                                 <i className="iconfont icon-Time"/> 时光
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="liuyan">
+                        <Menu.Item key="message">
                             <Link to="/message">
                                 <i className="iconfont icon-Time"/> 留言
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="photo">
+                            <Link to="/photo">
+                                <Icon type="picture" /> 照片墙
                             </Link>
                         </Menu.Item>
                         <SubMenu
@@ -85,7 +90,7 @@ function TopBar(props) {
     );
 }
 function mapStateToProps(state) {
-
+debugger
     return {
         current: state.app.key
     }

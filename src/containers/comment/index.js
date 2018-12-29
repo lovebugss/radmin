@@ -15,10 +15,81 @@ for (let i = 0; i < 2; i++) {
         author: "zhangsan",
         avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
         content: "aaaaaaaaaaaa",
-        datetime: "2014/15/12 12:55"
+        datetime: "2014/15/12 12:55",
+        likes:10,
+        dislikes:2,
+        children:[{
+            id: i,
+            actions: "评论",
+            author: "zhangsan",
+            avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            content: "aaaaaaaaaaaa",
+            datetime: "2014/15/12 12:55",
+            likes:10,
+            dislikes:2,
+            children:[
+
+            ]
+        },{
+            id: i,
+            actions: "评论",
+            author: "zhangsan",
+            avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            content: "aaaaaaaaaaaa",
+            datetime: "2014/15/12 12:55",
+            likes:10,
+            dislikes:2,
+            children:[
+
+            ]
+        }
+        ]
+
     });
 }
 
+function Message(props) {
+    let {item} = props;
+    return (
+        <Comment
+            actions={[
+                <span>
+                    <Tooltip title="Like">
+                        <Icon
+                            type="like"
+                            theme={props.action === 'liked' ? 'filled' : 'outlined'}
+                            onClick={props.like}
+                        />
+                    </Tooltip>
+                    <span style={{paddingLeft: 8, cursor: 'auto'}}>
+                        {item.likes}
+                    </span>
+                </span>,
+                <span>
+                    <Tooltip title="Dislike">
+                        <Icon
+                            type="dislike"
+                            theme={props.action === 'disliked' ? 'filled' : 'outlined'}
+                            onClick={props.dislike}
+                        />
+                    </Tooltip>
+                    <span style={{paddingLeft: 8, cursor: 'auto'}}>
+                        {item.dislikes}
+                    </span>
+                </span>,
+                <span>评论</span>,
+            ]}
+            author={item.author}
+            avatar={item.avatar}
+            content={(<p>{item.content}</p>)}
+            datetime={(
+                <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
+                    <span>{item.datetime}</span>
+                </Tooltip>
+            )}
+        />
+    );
+}
 
 function MessageBoard(props) {
 
@@ -32,43 +103,12 @@ function MessageBoard(props) {
                     itemLayout="horizontal"
                     dataSource={data}
                     renderItem={item => (
-                        <Comment
-                            actions={[
-                                <span>
-                                    <Tooltip title="Like">
-                                       <Icon
-                                           type="like"
-                                           theme={props.action === 'liked' ? 'filled' : 'outlined'}
-                                           onClick={props.like}
-                                       />
-                                    </Tooltip>
-                                    <span style={{paddingLeft: 8, cursor: 'auto'}}>
-                                      {props.likes}
-                                    </span>
-                                </span>,
-                                <span>
-                                    <Tooltip title="Dislike">
-                                        <Icon
-                                          type="dislike"
-                                          theme={props.action === 'disliked' ? 'filled' : 'outlined'}
-                                          onClick={props.dislike}
-                                        />
-                                    </Tooltip>
-                                    <span style={{paddingLeft: 8, cursor: 'auto'}}>
-                                      {props.dislikes}
-                                    </span>
-                                </span>,
-                                <span>评论</span>,
-                            ]}
-                            author={item.author}
-                            avatar={item.avatar}
-                            content={(<p>{item.content}</p>)}
-                            datetime={(
-                                <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-                                    <span>{item.datetime}</span>
-                                </Tooltip>
-                            )}
-                        />
+
+                        <Message
+                             item={item}
+                             dislike={props.dislike}
+                             like={props.like}
+                        >{item.children&&(<Message item={item.children} />)}</Message>
                     )}
                 />
             </Content>
@@ -86,10 +126,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         like: () => {
-
+            alert('like')
         },
         dislike: () => {
 
+            alert('dislike')
         }
     }
 }
