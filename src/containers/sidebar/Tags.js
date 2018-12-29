@@ -9,6 +9,7 @@ function Tags() {
 
     return(
         <Card
+            hoverable="true"
             title="标签分类"
         >
             <Tag color="magenta">magenta</Tag>

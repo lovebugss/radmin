@@ -57,7 +57,9 @@ class Search extends React.Component {
     render() {
         const { dataSource } = this.state;
         return (
-        <Card>
+        <Card
+            hoverable="true"
+        >
             <div className="global-search-wrapper">
                 <AutoComplete
                     className="global-search"

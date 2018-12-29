@@ -9,6 +9,7 @@ function Hot() {
 
     return(
         <Card
+            hoverable="true"
             title="热门"
         />
     );

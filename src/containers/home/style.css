@@ -23,12 +23,12 @@
     overflow: hidden;
 }
 .main-left {
-    background-color: bisque;
+    /*background-color: bisque;*/
     margin: 0px 12px;
     padding: 12px;
 }
 .main-right {
-    background-color: coral;
+    /*background-color: coral;*/
     margin: 0px 12px;
     padding: 12px;
 }

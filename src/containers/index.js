@@ -23,6 +23,7 @@ class Main extends React.Component {
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         <Route path="/time" component={Time}/>
+
                     </Switch>
                     <Footer/>
                 </Layout>

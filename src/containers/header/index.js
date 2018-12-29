@@ -30,7 +30,7 @@ function TopBar(props) {
 
 
     return (
-        <Header className="header" style={{position: 'fixed', zIndex: 99, width: '100%'}}>
+        <Header className="header">
 
             <Row>
                 <Col xs={24} sm={24} md={5} lg={5} xl={5} xxl={4}>
