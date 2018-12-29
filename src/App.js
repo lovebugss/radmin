@@ -3,8 +3,11 @@ import {BrowserRouter as Router, Route, Link,Switch} from "react-router-dom";
 import {Layout} from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Main from './containers';
+import Layouts from './containers';
 import Loading from './components/load';
+import ArticleList from './containers/list'
+import Time from './containers/time';
+import  MessageBoard from './containers/comment'
 
 
 class App extends React.Component {
@@ -15,7 +18,15 @@ class App extends React.Component {
 
             <Router>
                 <Layout className="layout">
-                    <Main/>
+                    <Layouts>
+                        <Switch>
+                        <Route exact path="/" component={ArticleList}/>
+                        <Route path="/time" component={Time}/>
+                        <Route path="/message" component={MessageBoard}/>
+
+                        </Switch>
+
+                    </Layouts>
                     {isFetching && <Loading/>}
 
                 </Layout>
@@ -25,7 +36,6 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-    debugger
     return {
         isFetching:state.app.isFetching
     }

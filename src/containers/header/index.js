@@ -56,7 +56,7 @@ function TopBar(props) {
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="liuyan">
-                            <Link to="/">
+                            <Link to="/message">
                                 <i className="iconfont icon-Time"/> 留言
                             </Link>
                         </Menu.Item>

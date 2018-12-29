@@ -6,12 +6,15 @@ import Info from './Info';
 import Hot from './Hot';
 import Search from './Search';
 import Tags from './Tags';
-import './style.css'
+import './style.css';
+import {Affix} from 'antd';
 
 export default function () {
     return (
         <div>
-            <Info/>
+            <Affix >
+                <Info/>
+            </Affix>
             <Search/>
             <Tags/>
             <Hot/>
