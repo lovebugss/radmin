@@ -90,7 +90,6 @@ function TopBar(props) {
     );
 }
 function mapStateToProps(state) {
-debugger
     return {
         current: state.app.key
     }

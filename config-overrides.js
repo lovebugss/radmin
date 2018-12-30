@@ -10,8 +10,8 @@ module.exports = function override(config, env) {
         config,
     );
     config = rewireLess.withLoaderOptions({
-         modifyVars: {"@primary-color": "#ff25b7",
-             "@box-shadow-base":"0 2px 8px rgba(0, 0, 0, .15)"},
+         modifyVars: {"@primary-color": "#40baff",
+             "@box-shadow-base":"0 2px 8px #FFC25B"},
         javascriptEnabled: true,
     })(config, env);
     return config;
