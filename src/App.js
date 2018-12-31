@@ -19,15 +19,13 @@ class App extends React.Component {
 
             <Router>
                 <Layout className="layout">
-                    <Layouts>
+
                         <Switch>
                         <Route exact path="/" component={ArticleList}/>
                         <Route path="/time" component={Time}/>
                         <Route path="/message" component={MessageBoard}/>
                         <Route path="/photo" component={Gallery}/>
                         </Switch>
-
-                    </Layouts>
                     {isFetching && <Loading/>}
 
                 </Layout>

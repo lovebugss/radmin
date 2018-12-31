@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import './style.css'
 import {Layout, List, Avatar, Icon, Comment, Tooltip} from 'antd';
 import moment from 'moment';
+import Layouts from '../index'
+
 const {Content} = Layout;
 const data = [];
 for (let i = 0; i < 2; i++) {
@@ -16,32 +18,28 @@ for (let i = 0; i < 2; i++) {
         avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
         content: "aaaaaaaaaaaa",
         datetime: "2014/15/12 12:55",
-        likes:10,
-        dislikes:2,
-        children:[{
+        likes: 10,
+        dislikes: 2,
+        children: [{
             id: i,
             actions: "评论",
             author: "zhangsan",
             avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
             content: "aaaaaaaaaaaa",
             datetime: "2014/15/12 12:55",
-            likes:10,
-            dislikes:2,
-            children:[
-
-            ]
-        },{
+            likes: 10,
+            dislikes: 2,
+            children: []
+        }, {
             id: i,
             actions: "评论",
             author: "zhangsan",
             avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
             content: "aaaaaaaaaaaa",
             datetime: "2014/15/12 12:55",
-            likes:10,
-            dislikes:2,
-            children:[
-
-            ]
+            likes: 10,
+            dislikes: 2,
+            children: []
         }
         ]
 
@@ -51,9 +49,10 @@ for (let i = 0; i < 2; i++) {
 function Message(props) {
     let {item} = props;
     return (
-        <Comment
-            actions={[
-                <span>
+        <Layouts>
+            <Comment
+                actions={[
+                    <span>
                     <Tooltip title="Like">
                         <Icon
                             type="like"
@@ -65,7 +64,7 @@ function Message(props) {
                         {item.likes}
                     </span>
                 </span>,
-                <span>
+                    <span>
                     <Tooltip title="Dislike">
                         <Icon
                             type="dislike"
@@ -77,17 +76,18 @@ function Message(props) {
                         {item.dislikes}
                     </span>
                 </span>,
-                <span>评论</span>,
-            ]}
-            author={item.author}
-            avatar={item.avatar}
-            content={(<p>{item.content}</p>)}
-            datetime={(
-                <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-                    <span>{item.datetime}</span>
-                </Tooltip>
-            )}
-        />
+                    <span>评论</span>,
+                ]}
+                author={item.author}
+                avatar={item.avatar}
+                content={(<p>{item.content}</p>)}
+                datetime={(
+                    <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
+                        <span>{item.datetime}</span>
+                    </Tooltip>
+                )}
+            />
+        </Layouts>
     );
 }
 
@@ -105,10 +105,10 @@ function MessageBoard(props) {
                     renderItem={item => (
 
                         <Message
-                             item={item}
-                             dislike={props.dislike}
-                             like={props.like}
-                        >{item.children&&(<Message item={item.children} />)}</Message>
+                            item={item}
+                            dislike={props.dislike}
+                            like={props.like}
+                        >{item.children && (<Message item={item.children}/>)}</Message>
                     )}
                 />
             </Content>
