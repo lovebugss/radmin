@@ -23,8 +23,8 @@ class Layouts extends React.Component {
 
             <Router>
                 <Layout className="layout">
-                    <Header history={this.props.history}/>
-                    <Banner/>
+                    {/*<Header history={this.props.history}/>*/}
+                    {this.props.banner && (<Banner/>)}
                     <Content style={{padding: '0 50px', marginTop: 12}}>
                         <Row>
                             <Col xs={{span: 24}} sm={24} md={18} lg={18} xl={18} xxl={19}>

@@ -42,7 +42,7 @@ class ArticleList extends React.Component {
 
     render() {
         return (
-            <Layouts>
+            <Layouts banner="true">
                 <div style={{background: '#ffffff', padding: '0px 12px 12px'}}>
                     {/*<Switcha checked={!loading} onChange={this.onChange}/>*/}
 

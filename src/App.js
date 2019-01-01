@@ -9,6 +9,7 @@ import ArticleList from './containers/list'
 import Time from './containers/time';
 import  MessageBoard from './containers/comment';
 import Gallery from'./containers/photo';
+import Header from './containers/header';
 
 
 class App extends React.Component {
@@ -19,7 +20,7 @@ class App extends React.Component {
 
             <Router>
                 <Layout className="layout">
-
+                    <Header/>
                         <Switch>
                         <Route exact path="/" component={ArticleList}/>
                         <Route path="/time" component={Time}/>
