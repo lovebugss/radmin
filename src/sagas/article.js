@@ -15,14 +15,14 @@ function* fetchArticle(action) {
     let listData = {
         dataList: [{
             id: 1,
-            href: '/topic',
+            href: '/detail',
             title: `JAVA`,
             avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
             description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
             content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series ofWe supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), design principles, practical patterns and high quality design resources (Sketch and Axure),to help people create their product prototypes beautifully and efficiently.',
         }, {
             id: 2,
-            href: '/topic',
+            href: '/detail',
             title: `assdf`,
             avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
             description: 'dfasdf.',
@@ -30,14 +30,14 @@ function* fetchArticle(action) {
         },
             {
                 id: 1,
-                href: '/topic',
+                href: '/detail',
                 title: `JAVA`,
                 avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
                 description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
                 content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series ofWe supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), design principles, practical patterns and high quality design resources (Sketch and Axure),to help people create their product prototypes beautifully and efficiently.',
             }, {
                 id: 2,
-                href: '/topic',
+                href: '/detail',
                 title: `assdf`,
                 avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
                 description: 'dfasdf.',
@@ -45,14 +45,14 @@ function* fetchArticle(action) {
             },
             {
                 id: 1,
-                href: '/topic',
+                href: '/detail',
                 title: `JAVA`,
                 avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
                 description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
                 content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series ofWe supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), design principles, practical patterns and high quality design resources (Sketch and Axure),to help people create their product prototypes beautifully and efficiently.',
             }, {
                 id: 2,
-                href: '/topic',
+                href: '/detail',
                 title: `assdf`,
                 avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
                 description: 'dfasdf.',

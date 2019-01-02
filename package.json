@@ -28,10 +28,13 @@
     "react-redux-loading-bar": "^4.1.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",
+    "react-virtualized": "^9.21.0",
     "reactstrap": "^6.5.0",
     "redux": "^4.0.1",
     "redux-saga": "^0.16.2",
     "redux-thunk": "^2.3.0",
+    "remark": "^10.0.1",
+    "remark-react": "^5.0.1",
     "reqwest": "^2.0.5"
   },
   "scripts": {

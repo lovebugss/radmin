@@ -8,7 +8,8 @@ import Banner from './Banner';
 import './style.css'
 import ArticleList from '../list'
 import Sidebar from '../sidebar'
-
+import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
+import Detail from '../detail';
 const {Content} = Layout;
 
 function Home() {
@@ -19,7 +20,11 @@ function Home() {
                 <Row>
                     <Col xs={{span: 24}} sm={24} md={18} lg={18} xl={18} xxl={19}>
                         <div className="main-left">
-                            <ArticleList/>
+                            <Switch>
+                                <Route exact path="/" component={ArticleList}/>
+                                <Route path="/detail/:id" component={Detail}/>
+
+                            </Switch>
                         </div>
                     </Col>
                     <Col xs={0} sm={0} md={6} lg={6} xl={6} xxl={5}>

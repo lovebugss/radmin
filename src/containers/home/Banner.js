@@ -6,7 +6,7 @@ import TweenOne from 'rc-tween-one';
 import BannerAnim, {Element} from 'rc-banner-anim';
 import 'rc-banner-anim/assets/index.css';
 import one from '../../static/images/bg-01.jpg';
-import two from '../../static/images/bg-02.jpg';
+import two from '../../static/images/bg-03.jpg';
 const BgElement = Element.BgElement;
 
 function Banner(props) {
@@ -37,13 +37,13 @@ function Banner(props) {
                           animation={{y: 30, opacity: 0, type: 'from'}}
                           id="title"
                 >
-                    三人行必有我师焉
+                    我们都在努力奔跑
                 </TweenOne>
                 <TweenOne className="banner-user-text"
                           animation={{y: 30, opacity: 0, type: 'from', delay: 100}}
                          id="content"
                 >
-                    The Fast Way Use Animation In React
+                    我们都是追梦人
                 </TweenOne>
             </Element>
             <Element key="bbb"
