@@ -7,11 +7,13 @@ import BannerAnim, {Element} from 'rc-banner-anim';
 import 'rc-banner-anim/assets/index.css';
 import one from '../../static/images/bg-01.jpg';
 import two from '../../static/images/bg-03.jpg';
+import MediaQuery from 'react-responsive';
+
 const BgElement = Element.BgElement;
 
 function Banner(props) {
     return (
-        <BannerAnim prefixCls="banner-user" autoPlay>
+        <BannerAnim prefixCls="banner-user" autoPlay style={{height:props.height}}>
             <Element key="aaa"
                      prefixCls="banner-user-elem"
                      followParallax={{
@@ -72,4 +74,20 @@ function Banner(props) {
     );
 
 }
-export default Banner;
+export default function () {
+    return(
+        <div>
+
+            <MediaQuery query="(min-device-width: 1224px)">
+
+                <MediaQuery query="(min-device-width: 1824px)">
+                    <Banner height="420px"/>
+                </MediaQuery>
+                <MediaQuery query="(max-width: 1224px)">
+                    <Banner height="360px"/>
+                </MediaQuery>
+            </MediaQuery>
+        </div>
+
+    )
+};

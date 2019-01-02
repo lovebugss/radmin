@@ -1,10 +1,11 @@
 import {combineReducers} from 'redux';
 import {loadingBarReducer as loadingBar} from 'react-redux-loading-bar';
+import { connectRouter } from 'connected-react-router'
 import article from './article'
 
 const initialState = {
     isFetching: false,
-    key:'home',
+    // key:'home',
     msg: {
         code: 1,
         content: ''
@@ -67,7 +68,8 @@ export function reducer(state = initialState, action) {
     }
 };
 
-const rootReducer = combineReducers({
+const rootReducer = (history)=> combineReducers({
+    router: connectRouter(history),
     app: reducer,
     article,
     loadingBar

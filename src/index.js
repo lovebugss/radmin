@@ -4,17 +4,20 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import {AppContainer} from 'react-hot-loader';
+import configureStore ,{history}from './configureStore';
+import {ConnectedRouter} from 'connected-react-router'
+
 import './static/css/index.css';
 import './static/css/animate.css';
-import configureStore from './configureStore';
-
 
 const store = configureStore();
 
 ReactDOM.render(
     <AppContainer>
         <Provider store={store}>
-            <App />
+            <ConnectedRouter history={history}>
+                <App />
+            </ConnectedRouter>
         </Provider>
     </AppContainer>
     ,

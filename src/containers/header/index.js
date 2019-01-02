@@ -10,7 +10,7 @@ import './style.css';
 import '../../static/font/iconfont.css';
 import LoadingBar from 'react-redux-loading-bar';
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
-
+import { push } from 'connected-react-router'
 
 const {
     Header, Footer, Sider, Content,
@@ -26,8 +26,15 @@ function Logo() {
     )
 }
 
-function TopBar(props) {
+function currKey(url) {
+    let key = url.replace("/","");
+    if(!key){
+        key = 'home'
+    }
+    return key;
+}
 
+function TopBar(props) {
 
     return (
         <Header className="header">
@@ -40,7 +47,7 @@ function TopBar(props) {
                     <Menu
                         className="menu"
                         onClick={props.handleClick}
-                        selectedKeys={[props.current]}
+                        selectedKeys={[currKey(props.pathname)]}
                         mode="horizontal"
                         defaultSelectedKeys={['2']}
                         style={{lineHeight: '60px', float: 'right'}}
@@ -91,7 +98,8 @@ function TopBar(props) {
 }
 function mapStateToProps(state) {
     return {
-        current: state.app.key
+        // current: state.app.key,
+        pathname:state.router.location.pathname,
     }
 }
 
@@ -99,13 +107,8 @@ function mapDispatchToProps(dispatch, ownProps) {
 
     return {
         handleClick: (e) => {
-
-            console.log(ownProps)
-            console.log(e)
-            dispatch({
-                type: 'CLICK_HEAD',
-                key: e.key
-            })
+            let key = e.key ==='home'?"/":e.key;
+            dispatch(push(key))
         }
     }
 }

@@ -3,24 +3,30 @@ import rootReducer from './reducers'
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './sagas'
 
+import { createBrowserHistory } from 'history'
+import { routerMiddleware } from 'connected-react-router'
+// import createRootReducer from './reducers'
+
+
 const win = window;
 const sagaMiddleware = createSagaMiddleware();
 const middlewares = [];
+const history = createBrowserHistory()
 
 let storeEnhancers;
 if (process.env.NODE_ENV === 'production') {
     storeEnhancers = compose(
-        applyMiddleware(...middlewares, sagaMiddleware)
+        applyMiddleware(routerMiddleware(history),...middlewares, sagaMiddleware)
     );
 } else {
     storeEnhancers = compose(
-        applyMiddleware(...middlewares, sagaMiddleware),
+        applyMiddleware(routerMiddleware(history),...middlewares, sagaMiddleware),
         (win && win.devToolsExtension) ? win.devToolsExtension() : (f) => f,
     );
 }
-
+export {history}
 export default function configureStore(initialState = {}) {
-    const store = createStore(rootReducer, initialState, storeEnhancers);
+    const store = createStore(rootReducer(history), initialState, storeEnhancers);
     sagaMiddleware.run(rootSaga);
     if (module.hot && process.env.NODE_ENV !== 'production') {
         // Enable Webpack hot module replacement for reducers

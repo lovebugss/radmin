@@ -77,3 +77,4 @@ function* fetchArticle(action) {
 export function* articleSaga(listData) {
     yield takeEvery(types.LOAD, fetchArticle);
 };
+

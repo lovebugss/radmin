@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
+import {BrowserRouter as Router,} from "react-router-dom";
+import { Route, Switch} from "react-router";
 import {Layout} from 'antd';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import Layouts from './containers';
 import Loading from './components/load';
 import Home from './containers/home'
-import ArticleList from './containers/list'
 import Time from './containers/time';
 import  MessageBoard from './containers/comment';
 import Gallery from'./containers/photo';
@@ -14,7 +12,7 @@ import Header from './containers/header';
 import Detail from './containers/detail'
 
 
-class App extends React.Component {
+class App extends Component {
 
     render() {
         let {isFetching} = this.props;

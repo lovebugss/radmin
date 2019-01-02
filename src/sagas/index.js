@@ -3,6 +3,8 @@
  */
 import {fork} from 'redux-saga/effects'
 import {articleSaga} from './article'
+import { push } from 'connected-react-router';
+
 
 export default function* rootSaga() {
     yield fork(articleSaga);
