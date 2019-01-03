@@ -23,11 +23,11 @@ import {
 } from 'antd';
 import Layouts from '../index'
 import {Link,} from "react-router-dom";
-const {loadArticle} = actions;
+const {loadArticles} = actions;
 
-const IconText = ({type, text}) => (
+const IconText = ({type, text,theme,twoToneColor}) => (
     <span>
-        <Icon type={type} style={{marginRight: 8}}/>
+        <Icon type={type} style={{marginRight: 8}} theme={theme} twoToneColor={twoToneColor}/>
         {text}
     </span>
 );
@@ -52,30 +52,30 @@ class ArticleList extends React.Component {
                     dataSource={this.props.listData}
                     pagination={{
                         onChange: (page) => {
-                            console.log(page);
+
                         },
                         pageSize: this.props.pageSize,
                     }}
                     renderItem={item => (
                         <List.Item
                             key={item.id}
-                            actions={!this.props.isLoading && [<IconText type="tags-o" text="java"/>,
-                                <IconText type="user-o" text="admin"/>,
-                                <IconText type="eye" text="2"/>,
-                                <IconText type="contacts" text="2018-12-10 15:30:21"/>]}
+                            actions={!this.props.isLoading && [<IconText type="tags" text="java" theme="twoTone" twoToneColor="#eb2f96"/>,
+                                <IconText type="user" text={item.createBy} />,
+                                <IconText type="eye" text={item.readCount}  theme="twoTone" twoToneColor="#40baff"/>,
+                                <IconText type="contacts" text={item.createTime} theme="twoTone" twoToneColor="#40baff"/>]}
                             extra={!this.props.isLoading &&
                             <img width={272} height={168}
                                  style={{height: 'auto', maxWidth: '100%', display: 'block'}}
                                  alt="logo"
-                                 src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"/>}
+                                 src={item.imgUrl}/>}
                         >
                             <Skeleton loading={this.props.isLoading} active avatar>
                                 <List.Item.Meta
-                                    // avatar={<Avatar src={item.avatar}/>}
-                                    title={<Link to={`${item.href}/${item.id}`}>{item.title}</Link>}
+                                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>}
+                                    title={<Link to={`detail/${item.id}`}>{item.articleTitle}</Link>}
                                     description={item.description}
                                 />
-                                {item.content}
+                                {item.description}
                             </Skeleton>
                         </List.Item>
                     )}
@@ -97,7 +97,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadArticle: bindActionCreators(loadArticle, dispatch)
+        loadArticle: bindActionCreators(loadArticles, dispatch),
+
     }
 };
 

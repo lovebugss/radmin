@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {loadingBarReducer as loadingBar} from 'react-redux-loading-bar';
+import {loadingBarReducer} from 'react-redux-loading-bar';
 import { connectRouter } from 'connected-react-router'
 import article from './article'
 
@@ -72,7 +72,7 @@ const rootReducer = (history)=> combineReducers({
     router: connectRouter(history),
     app: reducer,
     article,
-    loadingBar
+    loadingBar: loadingBarReducer,
 });
 
 export default rootReducer;

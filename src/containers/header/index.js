@@ -89,7 +89,7 @@ function TopBar(props) {
                         </Menu.Item>
                     </Menu>
                 </Col>
-                <LoadingBar/>
+                <LoadingBar className="loading-bar"/>
             </Row>
 
 

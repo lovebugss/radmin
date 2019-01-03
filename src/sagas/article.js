@@ -5,76 +5,53 @@ import {call, put, takeEvery, takeLatest} from 'redux-saga/effects';
 import {types, actions} from '../reducers/article';
 import {get} from '../util/fetch';
 import {actionsTypes as IndexActionTypes} from '../reducers'
+import {showLoading, hideLoading} from 'react-redux-loading-bar'
 
 const {loadDone} = actions;
 
 export const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 function* fetchArticle(action) {
 
-
-    let listData = {
-        dataList: [{
-            id: 1,
-            href: '/detail',
-            title: `JAVA`,
-            avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
-            description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-            content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series ofWe supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), design principles, practical patterns and high quality design resources (Sketch and Axure),to help people create their product prototypes beautifully and efficiently.',
-        }, {
-            id: 2,
-            href: '/detail',
-            title: `assdf`,
-            avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
-            description: 'dfasdf.',
-            content: 'diples, practical patterns and high quality design resources (Sketch and Axure), We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series ofWe supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), design principles, practical patterns and high quality design resources (Sketch and Axure),to help people create their product prototypes beautifully and efficiently.',
-        },
-            {
-                id: 1,
-                href: '/detail',
-                title: `JAVA`,
-                avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
-                description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-                content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series ofWe supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), design principles, practical patterns and high quality design resources (Sketch and Axure),to help people create their product prototypes beautifully and efficiently.',
-            }, {
-                id: 2,
-                href: '/detail',
-                title: `assdf`,
-                avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
-                description: 'dfasdf.',
-                content: 'diples, practical patterns and high quality design resources (Sketch and Axure), We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series ofWe supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), design principles, practical patterns and high quality design resources (Sketch and Axure),to help people create their product prototypes beautifully and efficiently.',
-            },
-            {
-                id: 1,
-                href: '/detail',
-                title: `JAVA`,
-                avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
-                description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-                content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series ofWe supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), design principles, practical patterns and high quality design resources (Sketch and Axure),to help people create their product prototypes beautifully and efficiently.',
-            }, {
-                id: 2,
-                href: '/detail',
-                title: `assdf`,
-                avatar: 'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
-                description: 'dfasdf.',
-                content: 'diples, practical patterns and high quality design resources (Sketch and Axure), We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series ofWe supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure),We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), design principles, practical patterns and high quality design resources (Sketch and Axure),to help people create their product prototypes beautifully and efficiently.',
-            }],
-        pageSize: 5,
-        isLoading: false,
-    };
+    yield put(showLoading())
     yield put({type: IndexActionTypes.FETCH_START});
-         // yield call(delay, 500)
+
+
+    // yield call(delay, 2000)
     try {
-        yield put(loadDone(listData));
+        let res = yield get("http://localhost:8082/article/list");
+        yield put(loadDone(Object.assign({isLoading: false},res)));
     } catch (Execption) {
 
     } finally {
+        yield put(hideLoading())
         yield put({type: IndexActionTypes.FETCH_END});
     }
 
 }
 
 
+
 export function* articleSaga(listData) {
     yield takeEvery(types.LOAD, fetchArticle);
 };
+
+function* fetchDetail(action) {
+    yield put(showLoading())
+    yield put({type: IndexActionTypes.FETCH_START});
+
+
+    try {
+        let res = yield get("http://localhost:8082/article/"+action.id);
+        yield put(loadDone(Object.assign({isLoading: false},res)));
+    } catch (Execption) {
+
+    } finally {
+        yield put(hideLoading())
+        yield put({type: IndexActionTypes.FETCH_END});
+    }
+}
+
+export function* loadArticleDetail() {
+    yield takeEvery(types.LOAD_DETAIL,fetchDetail)
+}
 

@@ -5,10 +5,8 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Header from './header';
 import Footer from './footer';
-import Home from './home';
-import Time from './time'
+
 import Banner from './home/Banner';
 import {Layout, Row, Col,} from 'antd';
 import './home/style.css'

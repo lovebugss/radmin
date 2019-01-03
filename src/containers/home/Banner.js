@@ -5,7 +5,7 @@ import React from 'react';
 import TweenOne from 'rc-tween-one';
 import BannerAnim, {Element} from 'rc-banner-anim';
 import 'rc-banner-anim/assets/index.css';
-import one from '../../static/images/bg-01.jpg';
+import one from '../../static/images/page_bg.jpg';
 import two from '../../static/images/bg-03.jpg';
 import MediaQuery from 'react-responsive';
 

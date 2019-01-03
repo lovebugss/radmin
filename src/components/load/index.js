@@ -6,7 +6,7 @@ import React from 'react';
 import {Spin, Icon} from 'antd';
 import style from './style.css';
 
-const antIcon = <Icon type="loading" style={{fontSize: 24}} spin/>;
+const antIcon = <Icon type="sync" style={{fontSize: 24}} spin/>;
 export default  () => (
     <div className="container">
         <Spin indicator={antIcon}/>

@@ -10,6 +10,7 @@
     /*position: fixed; */
     /*zIndex: 99;*/
     width: 100%;
+    /*margin: 15px 0 15px 0px*/
 }
 
 .header .menu {
@@ -17,6 +18,12 @@
     line-height: 60px;
     float: right;
 }
+
 .ant-menu-horizontal {
     border-bottom: 0px solid #e8e8e8;
+}
+
+.loading-bar {
+background-color: #40baff;
+    height: 2px;
 }

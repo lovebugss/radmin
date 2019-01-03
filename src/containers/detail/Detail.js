@@ -4,65 +4,88 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import remark from 'remark'
-import reactRenderer from 'remark-react'
+import remark2react  from 'remark-react'
 import Layouts from '../index'
+import {bindActionCreators} from 'redux';
+import {actions} from '../../reducers/article'
+import marked from 'marked';
+import hljs from 'highlight.js';
+
 
 import style from './style.css'
-import  './markdown.css'
-const articleContent = `# Live demo
-Changes are automatically rendered as you type.
-* Implements [GitHub Flavored Markdown](https://github.github.com/gfm/)
-* Renders actual, "native" React DOM elements
-* Allows you to escape or skip HTML (try toggling the checkboxes above)
-* If you escape or skip the HTML, no \`dangerouslySetInnerHTML\` is used! Yay!
-## HTML block below
-<blockquote>
-  This blockquote will change based on the HTML settings above.
-</blockquote>
-## How about some code?
-\`\`\`js
-var React = require('react');
-var Markdown = require('react-markdown');
-React.render(
-  <Markdown source="# Your markdown here" />,
-  document.getElementById('content')
-);
-\`\`\`
-Pretty neat, eh?
-## Tables?
-| Feature   | Support |
-| --------- | ------- |
-| tables    | ✔ |
-| alignment | ✔ |
-| wewt      | ✔ |
-## More info?
-Read usage information and more on [GitHub](//github.com/rexxars/react-markdown)
----------------
-A component by [Espen Hovlandsdal](https://espen.codes/)`;
-function Detail(props) {
-    return (
-        <Layouts>
-        <div className={style.detail}>
-            <div className={style.header}>
-                <h1>文章标题在这里</h1>
-            </div>
-            <div className="main">
-                <div id='preview' className={style.content}>
-                    <div className="markdown_body">
-                        {remark().use(reactRenderer).processSync(articleContent).contents}
+import  './marked.css'
+// import  './markdown.css'
+
+class Detail extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        debugger
+        this.props.getDetail(this.props.match.params.id);
+    }
+
+    componentWillMount() {
+// marked相关配置
+        marked.setOptions({
+            renderer: new marked.Renderer(),
+            gfm: true,
+            tables: true,
+            breaks: true,
+            pedantic: false,
+            sanitize: true,
+            smartLists: true,
+            smartypants: false,
+            highlight: function (code) {
+                return hljs.highlightAuto(code).value;
+            },
+        });
+    }
+
+    render() {
+        return (
+            <Layouts>
+                <div className={style.detail}>
+                    <div className={style.header}>
+                        <h1>{this.props.detail.articleTitle}</h1>
+                    </div>
+                    <div className="main">
+                        {/*<div id='preview' className={style.content}>*/}
+                            {/*<div className="markdown_body">*/}
+                                {/*{remark().use(remark2react).processSync(this.props.detail.content).contents}*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                        <div className="content">
+                            <div
+                                id="content"
+                                className="article-detail"
+                                dangerouslySetInnerHTML={{
+                                   __html: this.props.detail.content ? marked(this.props.detail.content) : null,
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </Layouts>
-    )
+            </Layouts>
+        );
+    }
 }
 
+
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        detail: state.article.data,
+        // connect:state.article.data.content
+
+
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    debugger
+    return {
+        getDetail: bindActionCreators(actions.loadDetail, dispatch)
+    }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Detail);
